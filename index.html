@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corretora Magnatas</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --azul: #0a2a43;
+  --dourado: #d4af37;
+  --branco: #fff;
+}
+* {margin:0;padding:0;box-sizing:border-box;font-family:'Lora', serif;}
+body {background:var(--branco);color:var(--azul);scroll-behavior:smooth;}
+
+header {
+  background:var(--azul);
+  color:#fff;
+  padding:15px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:fixed;
+  width:100%;
+  z-index:1000;
+  box-shadow:0 2px 5px rgba(0,0,0,.1);
+}
+header h1 {color:#fff;font-size:1.8rem;font-weight:600;}
+nav {display:flex;gap:30px;justify-content:center;flex:1;}
+nav a {text-decoration:none;color:#fff;font-weight:600;position:relative;transition:.3s;}
+nav a::after {content:"";position:absolute;width:0;height:2px;bottom:-5px;left:0;background:var(--dourado);transition:.3s;}
+nav a:hover {color:var(--dourado);}
+nav a:hover::after {width:100%;}
+
+.hero {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:90vh;
+  background:linear-gradient(to right,#fff,#f9f9f9);
+  padding:160px 40px 40px;
+}
+.hero-content {
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:center;
+  text-align:left;
+  margin-left: -80px;
+}
+.hero-image {
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.hero-image img {
+  width:50%;
+  height:100%;
+  object-fit:contain;
+  border-radius:10px;
+}
+.hero-title, .hero-subtitle {font-weight:700;line-height:1.2;font-size:3rem;text-align:left;width:100%;}
+.hero-subtitle .move {color:var(--dourado);}
+.hero-texto {
+  font-size:1.1rem;
+  line-height:1.6;
+  max-width:600px;
+  text-align:left;
+  margin:20px 0 0;
+}
+.instagram {
+  margin-top:20px;
+  text-align:left;
+  width:100%;
+}
+.instagram a {
+  color:var(--azul);
+  font-size:1.5rem;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition:.3s;
+}
+.instagram a:hover {color:var(--dourado);transform:scale(1.05);}
+
+/* Seguros */
+.seguros {padding:80px 20px;text-align:center;}
+.seguros h2 {font-size:2rem;margin-bottom:40px;}
+.carousel {position:relative;overflow:hidden;max-width:1200px;margin:auto;}
+.seguros-track {display:flex;transition:transform .5s ease;}
+.seguro-card {
+  background:#fff;border-radius:15px;border:2px solid #ddd;
+  box-shadow:0 6px 15px rgba(0,0,0,.1);padding:40px 20px;margin:10px;
+  flex:0 0 calc(20% - 20px);
+  text-align:center;display:flex;flex-direction:column;align-items:center;transition:.3s;
+}
+.seguro-card:hover {transform:translateY(-8px) scale(1.02);box-shadow:0 12px 25px rgba(0,0,0,.2);}
+.seguro-card i {font-size:5rem;color:var(--dourado);margin-bottom:20px;}
+.seguro-card h3 {font-size:1.3rem;margin-bottom:10px;font-weight:600;}
+.seguro-card p {font-size:1rem;color:#333;line-height:1.4;}
+.carousel-btn {position:absolute;top:50%;transform:translateY(-50%);
+  background:var(--azul);color:#fff;border:none;padding:12px 18px;cursor:pointer;border-radius:50%;z-index:10;transition:.3s;}
+.carousel-btn:hover {background:var(--dourado);}
+.prev {left:10px;} .next {right:10px;}
+.carousel-indicators {margin-top:20px;display:flex;justify-content:center;gap:10px;}
+.carousel-indicators span {width:12px;height:12px;background:#ccc;border-radius:50%;cursor:pointer;transition:.3s;}
+.carousel-indicators .active {background:var(--dourado);}
+
+/* Sobre e Contato */
+.sobre, .contato {padding:80px 20px;text-align:center;}
+.sobre h2, .contato h2 {font-size:2rem;margin-bottom:20px;}
+.sobre p, .contato p {max-width:700px;margin:0 auto;font-size:1.1rem;line-height:1.6;}
+.contato .telefone {display:inline-block;background:#fff;color:var(--azul);
+  padding:14px 30px;border-radius:25px;font-weight:700;font-size:1.2rem;margin-bottom:20px;
+  animation:pulse 1.5s infinite;text-decoration:none;transition:.3s;}
+.contato .telefone:hover {background:var(--dourado);color:#fff;}
+
+footer {text-align:center;padding:30px 0;font-size:.95rem;color:#555;}
+@keyframes pulse {0%{transform:scale(1);opacity:1;}50%{transform:scale(1.1);opacity:0.8;}100%{transform:scale(1);opacity:1;}}
+
+@media(max-width:1024px){
+  .seguro-card{flex:0 0 calc(33.3% - 20px);}
+  .hero-image img {width:70%;}
+  .hero-content {margin-left: -40px;}
+}
+@media(max-width:768px){
+  .seguro-card{flex:0 0 calc(50% - 20px);}
+  .hero-title,.hero-subtitle{font-size:2.2rem;}
+  .hero {flex-direction:column-reverse;text-align:center;}
+  .hero-content {align-items:center;text-align:center;margin-left:0;}
+  .hero-texto {text-align:center;}
+  .instagram {text-align:center;}
+  .hero-image img {width:60%;margin-top:20px;}
+}
+@media(max-width:480px){
+  .seguro-card{flex:0 0 100%;}
+  .hero-title,.hero-subtitle{font-size:1.8rem;}
+  .hero-image img {width:80%;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Corretora Magnatas</h1>
+  <nav>
+    <a href="#seguros">Nossos Seguros</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#contato">Contato</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-image">
+    <img src="assets/design sem nome.jpg" alt="Leão - Símbolo Corretora Magnatas">
+  </div>
+  <div class="hero-content">
+    <h1 class="hero-title">Protegendo o</h1>
+    <h2 class="hero-subtitle">que te <span class="move">MOVE</span></h2>
+    <div class="hero-texto">
+      Esta é apenas uma amostra dos nossos seguros.<br>
+      Entre em contacto para um orçamento personalizado.<br>
+      Visite também o nosso Instagram para mais detalhes.
+    </div>
+    <div class="instagram">
+      <a href="https://www.instagram.com/corretor_de_seguro/" target="_blank"><i class="fab fa-instagram"></i> @corretor_de_seguro</a>
+    </div>
+  </div>
+</section>
+
+<section id="seguros" class="seguros">
+  <h2>Nossos Seguros</h2>
+  <div class="carousel">
+    <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+    <div class="seguros-track">
+      <!-- 20 seguros iguais anteriores -->
+      <div class="seguro-card"><i class="fas fa-car"></i><h3>Auto</h3><p>Protege o veículo contra danos, furto, roubo e responsabilidade em acidentes.</p></div>
+      <div class="seguro-card"><i class="fas fa-house"></i><h3>Multirriscos</h3><p>Cobre a casa ou o negócio contra incêndios, inundações e outros danos.</p></div>
+      <div class="seguro-card"><i class="fas fa-helmet-safety"></i><h3>Acidentes de Trabalho</h3><p>Garante proteção ao trabalhador em caso de acidente durante o trabalho.</p></div>
+      <div class="seguro-card"><i class="fas fa-people-arrows"></i><h3>Responsabilidade Civil</h3><p>Cobre danos causados a terceiros.</p></div>
+      <div class="seguro-card"><i class="fas fa-user-shield"></i><h3>Acidentes Pessoais</h3><p>Protege em caso de morte ou invalidez por acidente.</p></div>
+      <div class="seguro-card"><i class="fas fa-notes-medical"></i><h3>Saúde</h3><p>Cobre despesas médicas, hospitalares e tratamentos.</p></div>
+      <div class="seguro-card"><i class="fas fa-heart"></i><h3>Vida</h3><p>Garante apoio financeiro à família em caso de falecimento.</p></div>
+      <div class="seguro-card"><i class="fas fa-plane-departure"></i><h3>Viagem</h3><p>Cobre imprevistos durante viagens.</p></div>
+      <div class="seguro-card"><i class="fas fa-dog"></i><h3>Pet</h3><p>Protege o animal de estimação em caso de acidente ou doença.</p></div>
+      <div class="seguro-card"><i class="fas fa-ship"></i><h3>Marítimo</h3><p>Cobre embarcações e mercadorias transportadas por mar.</p></div>
+      <div class="seguro-card"><i class="fas fa-building"></i><h3>Engenharia</h3><p>Protege obras, construções e equipamentos durante a execução.</p></div>
+      <div class="seguro-card"><i class="fas fa-piggy-bank"></i><h3>PPR / IMV</h3><p>Planos de poupança ou investimento com vantagens fiscais.</p></div>
+      <div class="seguro-card"><i class="fas fa-box"></i><h3>Mercadorias</h3><p>Protege bens durante o transporte.</p></div>
+      <div class="seguro-card"><i class="fas fa-plane"></i><h3>Aéreo</h3><p>Cobre aeronaves e mercadorias transportadas por via aérea.</p></div>
+      <div class="seguro-card"><i class="fas fa-lock"></i><h3>Furto / Roubo</h3><p>Protege bens contra furto ou roubo.</p></div>
+      <div class="seguro-card"><i class="fas fa-coins"></i><h3>Lucros Cessantes</h3><p>Compensa a perda de rendimentos após um sinistro.</p></div>
+      <div class="seguro-card"><i class="fas fa-hands-helping"></i><h3>Assistência em Viagem</h3><p>Apoio em emergências durante viagens.</p></div>
+      <div class="seguro-card"><i class="fas fa-file-contract"></i><h3>Cauções</h3><p>Garante o cumprimento de obrigações contratuais.</p></div>
+      <div class="seguro-card"><i class="fas fa-seedling"></i><h3>Colheitas</h3><p>Protege a produção agrícola contra fenómenos naturais.</p></div>
+      <div class="seguro-card"><i class="fas fa-home"></i><h3>Perda de Rendas</h3><p>Compensa o proprietário por rendas não recebidas.</p></div>
+      <div class="seguro-card"><i class="fas fa-scale-balanced"></i><h3>Proteção Jurídica</h3><p>Cobre despesas com apoio e defesa legal.</p></div>
+    </div>
+    <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+  </div>
+</section>
+
+<section id="sobre" class="sobre">
+  <h2>Sobre a Corretora Magnatas</h2>
+  <p>A Corretora Magnatas é especializada em soluções de seguros personalizadas, garantindo proteção completa e atendimento profissional para cada cliente.</p>
+</section>
+
+<section id="contato" class="contato">
+  <h2>Contato</h2>
+  <a class="telefone" href="https://wa.me/351927256879" target="_blank"><i class="fab fa-whatsapp"></i> +351 927256879</a>
+  <p>Entre em contacto para obter um orçamento personalizado e tirar todas as suas dúvidas.</p>
+</section>
+
+<footer>
+  &copy; 2025 <strong>@2025magnatas</strong>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  const track = document.querySelector(".seguros-track");
+  const prev = document.querySelector(".prev");
+  const next = document.querySelector(".next");
+  const cards = document.querySelectorAll(".seguro-card");
+  const cardsPerView = 5;
+  let index = 0;
+
+  cards.forEach((card,i)=>{setTimeout(()=>{card.classList.add("show");},i*100);});
+
+  prev.addEventListener("click", ()=>{
+    index = Math.max(index - cardsPerView,0);
+    track.style.transform = `translateX(-${index*20}%)`;
+  });
+  next.addEventListener("click", ()=>{
+    index = Math.min(index + cardsPerView, cards.length - cardsPerView);
+    track.style.transform = `translateX(-${index*20}%)`;
+  });
+});
+</script>
+
+</body>
+</html>

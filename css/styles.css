@@ -1,0 +1,23 @@
+.logo-leao {
+  width: 50px; /* ajuste o tamanho conforme necessário */
+  height: auto;
+  margin-right: 10px; /* espaço entre a imagem e o texto */
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  position: fixed;
+  width: 100%;
+  background: var(--azul);
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,.1);
+}
+header h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
